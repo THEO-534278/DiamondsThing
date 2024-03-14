@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spotify 2</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for("static", filename="style.css") }}>
+</head>
+<body>
+    <header>Spotify 2</header>
+    <br>
+    <h1>Theo's version</h1>
+    <br>
+    <form id="songform">
+        <br>
+        <input type="text" id="songInput" name="songInput" placeholder="enter song name">
+        <br>
+        <input type="text" id="otherInput" name="otherInput" placeholder="doesn't matter">
+        <br>
+        <button type="button" onclick="findsong()">Find Song</button>
+    </form>
+
+
+
+    <div>
+        <p id="output">OUTPUT OF THE PYTHON CODE</p>
+    </div>
+
+    <script>
+
+        function findsong() {
+            document.getElementById("output").innerHTML = 'Loading...';
+
+            var songInput= document.getElementById("songInput").value;
+
+            fetch('/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ input: songInput}),
+
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
