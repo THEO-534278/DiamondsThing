@@ -20,17 +20,30 @@
         <input type="text" id="otherInput" name="otherInput" placeholder="doesn't matter">
         <br>
         <button type="button" onclick="findsong()">Find Song</button>
+
     </form>
 
 
 
-    <div>
+    <div id="mid">
+        <br>
+        <br>
         <p id="output">OUTPUT OF THE PYTHON CODE</p>
     </div>
+    <div id="mid">
+        <p id="sillyBilly">Second line of output</p>
+    </div>
 
-    <script>
+    <script> 
+
+        var addition;
+
+        addition = parseFloat("0");
 
         function findsong() {
+
+            addition++;
+
             document.getElementById("output").innerHTML = 'Loading...';
 
             var songInput= document.getElementById("songInput").value;
@@ -46,8 +59,10 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("output").innerHTML = data;
+                document.getElementById('sillyBilly').innerHTML = addition;            
+            
             })
-            .catch(error => console.error('Error:', error));
+
         }
     </script>
 </body>

@@ -5,6 +5,7 @@ from flask import jsonify
 
 
 def song(input):
-    time.sleep(1)
+    time.sleep(.3)
+    input = capitalize(input)
     return input
 

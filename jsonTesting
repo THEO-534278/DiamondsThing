@@ -1,0 +1,15 @@
+import json
+
+
+sampleDict = {
+  "firstName": "John",
+  "lastName" : "Smith"
+}
+
+sampleJson = json.dumps(sampleDict, indent=4)
+
+
+sampleDict = json.loads(sampleJson)
+print(sampleDict['firstName'])
+print(sampleDict['lastName'])
+
